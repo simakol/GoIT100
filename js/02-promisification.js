@@ -4,54 +4,50 @@
  * - Функція, яка повертає проміс
  */
 
-const makeOrder = (dish, onSuccess, onError) => {
-  const passed = Math.random() > 0.5;
+// const makeOrder = (dish) => {
+//   return new Promise((res, rej) => {
+//     const passed = Math.random() > 0.5;
 
-  setTimeout(() => {
-    if (passed) {
-      onSuccess(`✅ Ваше замовлення: ${dish}`);
-    }
+//     setTimeout(() => {
+//       if (passed) {
+//         res(`✅ Ваше замовлення: ${dish}`);
+//       }
 
-    onError("❌ Упс, у нас закінчилися продукти");
-  }, 1000);
-};
+//       rej("❌ Упс, у нас закінчилися продукти");
+//     }, 1000);
+//   });
+// };
 
-makeOrder(
-  "пиріжок",
-  (result) => {
-    console.log("onMakeOrderSuccess");
-    console.log(result);
-  },
-  (error) => {
-    console.log("onMakeOrderError");
-    console.log(error);
-  }
-);
+// makeOrder("пиріжок")
+//   .then((result) => {
+//     console.log("onMakeOrderSuccess");
+//     console.log(result);
+//   })
+//   .catch((error) => {
+//     console.log("onMakeOrderError");
+//     console.log(error);
+//   });
 
 /*
  * Промісифікація «синхронних» функцій
- * - Promise.resolve()
- * - Promise.reject()
+ * - Promise.resolve() - статичний метод який на ходу створить проміс у стані Fullfilled
+ * - Promise.reject() - статичний метод який на ходу ствроить проміс у стані Rejected
  */
 
-const prepareDish = (dish, onSuccess, onError) => {
+const prepareDish = (dish) => {
   const passed = Math.random() > 0.5;
 
-  if (passed) {
-    onSuccess(`✅ Ваше замовлення: ${dish}`);
-  }
-
-  onError("❌ Упс, у нас закінчилися продукти");
+  return passed
+    ? Promise.resolve(`✅ Ваше замовлення: ${dish}`)
+    : Promise.reject("❌ Упс, у нас закінчилися продукти");
 };
 
-makeOrder(
-  "пиріжок",
-  (result) => {
+prepareDish("пиріжок")
+  .then((result) => {
     console.log("onMakeOrderSuccess");
     console.log(result);
-  },
-  (error) => {
+  })
+  .catch((error) => {
     console.log("onMakeOrderError");
     console.log(error);
-  }
-);
+  });
