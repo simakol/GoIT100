@@ -4,12 +4,11 @@
   - Promise.prototype.then(result)
   - Promise.prototype.catch(error)
   - Promise.prototype.finally()
-- Цепочки промисов
-- Промисификация функций
-- Статические методы:
+- Ланцюги промісів
+- Промісифікація функцій
+- Статичні методи:
   - Promise.all()
   - Promise.race()
-- Мастерская: ипподром
-- Чтиво:
-  - [Промисы на примере бургер-вечеринки](https://habr.com/ru/company/nix/blog/323066/)
-  - [У нас проблемы с промисами](https://habr.com/ru/company/mailru/blog/269465/)
+- Почитати:
+  - [Проміси на прикладі бургер-вечірки](https://habr.com/ru/company/nix/blog/323066/)
+  - [У нас проблеми з промісами](https://habr.com/ru/company/mailru/blog/269465/)
